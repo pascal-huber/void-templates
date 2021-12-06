@@ -1,7 +1,11 @@
+# My private void templates
 
-| Package | Status  |
-|---------|---------|
-| brave   | working |
+This is a fork of [ram02z's repo](https://github.com/ram02z/void-templates)
+containing my own packages.
+
+| Package | Status  | Author                                                    |
+|---------|---------|-----------------------------------------------------------|
+| brave   | working | [void-goodies](https://notabug.org/reback00/void-goodies) |
 
 To add repository:
 
