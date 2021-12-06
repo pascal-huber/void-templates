@@ -3,7 +3,7 @@
 This is a fork of [ram02z's repo](https://github.com/ram02z/void-templates)
 containing my own packages.
 
-| Package | Status  | Author                                                    |
+| Package | Status  | Source                                                    |
 |---------|---------|-----------------------------------------------------------|
 | brave   | working | [void-goodies](https://notabug.org/reback00/void-goodies) |
 
