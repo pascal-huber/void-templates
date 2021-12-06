@@ -82,6 +82,12 @@ xbps-rindex --privkey $HOME/private.pem --sign --signedby "Pascal Huber" $LIBC
 xbps-rindex --privkey $HOME/private.pem --sign-pkg $LIBC/*.xbps
 echo "signing end"
 
+# Generate .gitattributes
+cat << EOF > .gitattributes
+*.xbps filter=lfs diff=lfs merge=lfs -text
+*.xbps.sig filter=lfs diff=lfs merge=lfs -text
+EOF
+
 # Generate homepage
 cat << EOF > index.html
 <html>
