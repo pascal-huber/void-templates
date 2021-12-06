@@ -82,12 +82,6 @@ xbps-rindex --privkey $HOME/private.pem --sign --signedby "Pascal Huber" $LIBC
 xbps-rindex --privkey $HOME/private.pem --sign-pkg $LIBC/*.xbps
 echo "signing end"
 
-# Generate .gitattributes
-cat << EOF > .gitattributes
-*.xbps filter=lfs diff=lfs merge=lfs -text
-*.xbps.sig filter=lfs diff=lfs merge=lfs -text
-EOF
-
 # Generate homepage
 cat << EOF > index.html
 <html>
@@ -148,6 +142,9 @@ COMMIT_MESSAGE="$GITHUB_ACTOR published a site update"
 if [ -z "$(git status --porcelain)" ]; then
   result="Nothing to deploy"
 else
+  git lfs install
+  git lfs track "*.xbps"
+  git lfs track "*.xbps.sig"
   git add -Af .
   git commit -m "$COMMIT_MESSAGE"
   git push -fq origin $TARGET_BRANCH > /dev/null
