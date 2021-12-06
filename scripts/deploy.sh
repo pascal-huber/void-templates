@@ -73,12 +73,14 @@ fi
 ls -la $LIBC
 
 # Sign packages
+echo "signing start"
 echo "$PRIVATE_PEM" > $HOME/private.pem
 echo "$PRIVATE_PEM_PUB" > $HOME/private.pem.pub
 
 xbps-rindex --add $LIBC/*.xbps
 xbps-rindex --privkey $HOME/private.pem --sign --signedby "Pascal Huber" $LIBC
 xbps-rindex --privkey $HOME/private.pem --sign-pkg $LIBC/*.xbps
+echo "signing end"
 
 # Generate homepage
 cat << EOF > index.html
@@ -134,8 +136,8 @@ cat << EOF >> $LIBC/index.html
 </html>
 EOF
 
+echo "committing changes"
 COMMIT_MESSAGE="$GITHUB_ACTOR published a site update"
-
 # Deploy/Push (or not?)
 if [ -z "$(git status --porcelain)" ]; then
   result="Nothing to deploy"
