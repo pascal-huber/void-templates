@@ -7,11 +7,11 @@
 set -e
 
 REPONAME="void-templates"
-OWNER="ram02z"
+OWNER="SirPscl"
 GHIO="${OWNER}.github.io"
 URL="https://${GHIO}/${REPONAME}"
 TARGET_BRANCH="gh-pages"
-EMAIL="omarzeghouanii@gmail.com"
+EMAIL="pascal.huber@resolved.ch"
 BUILD_DIR="void-packages/hostdir/binpkgs"
 case "$ARCH" in
     *musl* ) LIBC="musl" ;;
@@ -77,7 +77,7 @@ echo "$PRIVATE_PEM" > $HOME/private.pem
 echo "$PRIVATE_PEM_PUB" > $HOME/private.pem.pub
 
 xbps-rindex --add $LIBC/*.xbps
-xbps-rindex --privkey $HOME/private.pem --sign --signedby "Omar Zeghouani" $LIBC
+xbps-rindex --privkey $HOME/private.pem --sign --signedby "Pascal Huber" $LIBC
 xbps-rindex --privkey $HOME/private.pem --sign-pkg $LIBC/*.xbps
 
 # Generate homepage
