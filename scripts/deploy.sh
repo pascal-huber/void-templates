@@ -144,7 +144,6 @@ if [ -z "$(git status --porcelain)" ]; then
 else
   git lfs install
   git lfs track "*.xbps"
-  git lfs track "*.xbps.sig"
   git add -Af .
   git commit -m "$COMMIT_MESSAGE"
   git push -fq origin $TARGET_BRANCH > /dev/null
