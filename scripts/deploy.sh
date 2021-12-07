@@ -15,11 +15,15 @@ case "$ARCH" in
     * ) LIBC="glibc" ;;
 esac
 
+# TODO: this will cause problems when a package name is a prefix of another
 delete_or_archive(){
   if [ "$ARCHIVE" = "true" ]; then
-    mkdir -p "archive/$LIBC"
-    # TODO: this will cause problems when a package name is a prefix of another
-    mv ${LIBC}/${1}* "archive/$LIBC"
+    for file in "${LIBC}"/"${1}"*; do
+      mkdir -p "archive/$LIBC"
+      if [ -f "$file" ]; then
+        mv "$file" "archive/$LIBC/"
+      fi
+    done
   else
     find $LIBC -maxdepth 1 -name "${1}*" -delete
   fi
@@ -48,17 +52,18 @@ echo "Removing or archiving deleted packages"
 RPKGS=$(cat /tmp/removed)
 for pkg in ${RPKGS}; do
   echo -e "\t$pkg"
-  delete_or_archive "$pkg"
+  delete_or_archive $pkg
 done
 
 # Delete repodata
-echo "deleting repodata"
+echo "Deleting repodata"
 find $LIBC -name "$ARCH-repodata" -maxdepth 1 -delete
 
 # Delete package if it the same version was built again
 echo "Removing rebuilt packages"
 for file in ../$BUILD_DIR/*.xbps; do
   find $LIBC -iname $file -maxdepth 1 -delete
+  find archive/$LIBC -iname $file -maxdepth 1 -delete
 done
 
 # Remove or archive packages to be built
@@ -66,7 +71,7 @@ echo "Removing or archiving packages"
 CPKGS=$(cat /tmp/templates)
 for pkg in ${CPKGS}; do
   echo -e "\t$pkg"
-  delete_or_archive "$pkg"
+  delete_or_archive $pkg
 done
 
 # Add new packages
@@ -81,8 +86,11 @@ echo "Signing packages"
 echo "$PRIVATE_PEM" > $HOME/private.pem
 echo "$PRIVATE_PEM_PUB" > $HOME/private.pem.pub
 xbps-rindex --add $LIBC/*.xbps
-xbps-rindex --privkey $HOME/private.pem --sign --signedby "$SIGNED_BY" $LIBC
-xbps-rindex --privkey $HOME/private.pem --sign-pkg $LIBC/*.xbps
+for pkg in ${CPKGS}; do
+  echo -e "\t$pkg"
+  xbps-rindex --privkey $HOME/private.pem --sign --signedby "$SIGNED_BY" $LIBC
+  xbps-rindex --privkey $HOME/private.pem --sign-pkg $LIBC/$pkg*
+done
 
 # Generate homepage
 cat << EOF > index.html
@@ -138,6 +146,68 @@ cat << EOF >> $LIBC/index.html
 </pre><hr></body>
 </html>
 EOF
+
+# Generate index.html for archive
+if [ -d archive ]; then
+  cat << EOF > archive/index.html
+<html>
+<head><title>Index of /$REPONAME/archive</title></head>
+<body>
+<h1>Index of /$REPONAME/$LIBC</h1>
+<hr><pre><a href="$URL/">../</a>
+EOF
+
+  for f in archive/*;do
+    file=$(basename $f)
+    if [ "$file" == "index.html" ]; then
+      echo "ignored: $file"
+      continue
+    fi
+
+    size=$(du -s $f | awk '{print $1;}')
+    s=$(stat -c %y $f)
+    stat=${s%%.*}
+    if [ -f "$f" ]; then
+      printf '<a href="%s%s%s">%-40s%35s%20s\n' "$URL/" "archive/" "$file" "$file</a>" "$stat" "$size" >> archive/index.html
+    fi
+  done
+
+  cat << EOF >> archive/index.html
+</pre><hr></body>
+</html>
+EOF
+fi
+
+if [ -d archive/$LIBC ]; then
+  # Generate index.html for archive
+  cat << EOF > archive/$LIBC/index.html
+<html>
+<head><title>Index of /$REPONAME/archive/$LIBC</title></head>
+<body>
+<h1>Index of /$REPONAME/$LIBC</h1>
+<hr><pre><a href="$URL/">../</a>
+EOF
+
+  for f in archive/$LIBC/*;do
+    file=$(basename $f)
+    if [ "$file" == "index.html" ]; then
+      echo "ignored: $file"
+      continue
+    fi
+
+    size=$(du -s $f | awk '{print $1;}')
+    s=$(stat -c %y $f)
+    stat=${s%%.*}
+    if [ -f "$f" ]; then
+      printf '<a href="%s%s%s">%-40s%35s%20s\n' "$URL/" "archive/$LIBC" "$file" "$file</a>" "$stat" "$size" >> archive/$LIBC/index.html
+    fi
+  done
+
+  cat << EOF >> archive/$LIBC/index.html
+</pre><hr></body>
+</html>
+EOF
+fi
 
 # Committing changes
 echo "Committing changes"

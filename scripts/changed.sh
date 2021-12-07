@@ -19,9 +19,6 @@ git diff-tree -r --no-renames --name-only --diff-filter=AM \
 	tee /tmp/templates |
 	sed "s/^/  /" >&2
 
-# TODO: remove this as soon as everything works
-echo "brave" >> /tmp/templates
-
 PKGS=$(cat /tmp/templates)
 for pkg in ${PKGS}; do
 	mkdir -p "void-packages/srcpkgs/$pkg" && 
