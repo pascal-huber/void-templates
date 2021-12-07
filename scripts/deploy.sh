@@ -63,7 +63,9 @@ find $LIBC -name "$ARCH-repodata" -maxdepth 1 -delete
 echo "Removing rebuilt packages"
 for file in ../$BUILD_DIR/*.xbps; do
   find $LIBC -iname $file -maxdepth 1 -delete
-  find archive/$LIBC -iname $file -maxdepth 1 -delete
+  if [ -d archive/$LIBC ]; then
+    find archive/$LIBC -iname $file -maxdepth 1 -delete
+  fi
 done
 
 # Remove or archive packages to be built
