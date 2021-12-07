@@ -64,6 +64,12 @@ jobs:
       - name: Sign and deploy to GH pages
         run: bash scripts/deploy.sh
         env:
+          REPONAME: void-templates
+          TARGET_BRANCH: gh-pages
+          OWNER: SirPscl
+          SIGNED_BY: Pascal Huber
+          EMAIL: pascal.huber@resolved.ch
+          ARCHIVE: "true"
           PRIVATE_PEM: ${{ secrets.PRIVATE_PEM }}
           PRIVATE_PEM_PUB: ${{ secrets.PRIVATE_PEM_PUB }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
