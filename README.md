@@ -1,17 +1,13 @@
 # My private void templates
 
-This is a fork of [ram02z's repo](https://github.com/ram02z/void-templates)
-containing my own packages.
-
-| Package | Status  | Source                                                    |
+| Package | Status  | Source/Credits                                            |
 |---------|---------|-----------------------------------------------------------|
 | brave   | working | [void-goodies](https://notabug.org/reback00/void-goodies) |
+| svlog   | working | [svlog](https://github.com/SirPscl/svlog) |
 
 To add repository:
 
 ```
-# echo 'repository=https://sirpscl.github.io/void-templates/$LIBC' > /etc/xbps.d/11-mytemplates.conf
+echo 'repository=https://<the-repo>/glibc >> /etc/xbps.d/11-mytemplates.conf
 ```
-
-> where $LIBC is either musl or glibc
 
