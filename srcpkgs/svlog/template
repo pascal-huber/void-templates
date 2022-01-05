@@ -1,15 +1,15 @@
 # Template file for 'svlog'
 pkgname=svlog
-version=0.1.1
+version=0.2.0
 revision=1
 build_style=cargo
-depends="less"
+depends=""
 short_desc="Display, filter and follow socklog log files on Void Linux."
 maintainer="Pascal Huber <pascal.huber@resolved.ch>"
 license="MIT"
 homepage="https://github.com/SirPscl/svlog"
 distfiles="https://github.com/SirPscl/svlog/archive/v${version}.tar.gz"
-checksum=75e479e7fc79d9f921936fa77091ecaf7fe8d789e1769e664b6f93aa47acbac8
+checksum=3c5cf70e6ca0a72c5ee691bf505c44a08b10751ac69ff366c79816f7c3026ea7
 
 post_install() {
 	vlicense LICENSE
