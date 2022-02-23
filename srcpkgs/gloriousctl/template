@@ -1,0 +1,26 @@
+# Template file for 'gloriousctl'
+pkgname=gloriousctl
+version=0.0
+revision=1
+build_style=gnu-makefile
+hostmakedepends=""
+makedepends="hidapi-devel"
+depends=""
+short_desc="Utility to adjust the settings of Glorious model O/D mice (and probably other Sinowealth-made mice)"
+maintainer="Pascal Huber <pascal.huber@resolved.ch>"
+license="EUPL-1.2"
+homepage="https://github.com/enkore/gloriousctl"
+distfiles="https://github.com/enkore/gloriousctl/tarball/master"
+checksum=56883dbef9534a4e57e06d8b88b9be81ebde8567786414c83606243a64a865db
+
+do_extract(){
+	bsdtar xf ${XBPS_SRCDISTDIR}/${pkgname}-${version}/master --strip-components 1
+}
+
+do_install(){
+    vbin ${pkgname}
+}
+
+post_install() {
+    vlicense LICENSE
+}
