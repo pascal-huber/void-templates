@@ -1,0 +1,2 @@
+brave-1.36.119 -> brave-1.38.119
+NO VERSION found for gloriousctl
