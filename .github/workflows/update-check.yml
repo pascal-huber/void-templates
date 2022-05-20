@@ -1,5 +1,6 @@
 name: update-check
 on:
+  push:
   workflow_dispatch:
   schedule:
     # at 4:39
