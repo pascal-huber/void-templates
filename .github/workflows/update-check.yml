@@ -38,8 +38,8 @@ jobs:
           for package in ./srcpkgs/*; do
             ./xbps-src update-check "$package" 2>&1 | tee -a public/full.txt
           done
-          grep -v "NO VERSION" public/full.txt > public/updates.txt
-          grep "NO VERSION" public/full.txt > public/no-version.txt
+          grep "NO VERSION" public/full.txt > public/no-version.txt || true
+          grep -v "NO VERSION" public/full.txt > public/updates.txt || true
       - name: generate index.html
         working-directory: ./void-templates/public
         run: |
