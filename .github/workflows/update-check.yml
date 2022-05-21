@@ -36,10 +36,12 @@ jobs:
         run: |
           mkdir public
           for package in ./srcpkgs/*; do
-            ./xbps-src update-check "$package" 2>&1 | tee -a public/full.txt
+            if [ -x "${package}/update-check.sh" ]; then
+              sh "${package}/update-check.sh" | tee -a public/updates.txt
+            else
+              ./xbps-src update-check "$package" 2>&1 | tee -a public/updates.txt
+            fi
           done
-          grep "NO VERSION" public/full.txt > public/no-version.txt || true
-          grep -v "NO VERSION" public/full.txt > public/updates.txt || true
       - name: generate index.html
         working-directory: ./void-templates/public
         run: |
