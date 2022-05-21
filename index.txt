@@ -1,1 +1,1 @@
-NO VERSION found for gloriousctl
+gloriousctl latest commit date: 2021-11-30T17:29:15Z -> 2022-04-25T18:23:15Z
