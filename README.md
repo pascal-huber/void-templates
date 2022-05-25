@@ -3,7 +3,7 @@
 | Package     | Status  | Source/Credits                                            |
 |-------------|---------|-----------------------------------------------------------|
 | brave       | working | [void-goodies](https://notabug.org/reback00/void-goodies) |
-| svlog       | working | [svlog](https://github.com/SirPscl/svlog)                 |
+| svlog       | working | [svlog](https://github.com/pascal-huber/svlog)            |
 | gloriousctl | working | [gloriousctl](https://github.com/enkore/gloriousctl)      |
 
 To add repository:
