@@ -1,3 +1,3 @@
 site='https://brave.com/latest/'
 # NOTE: the desktop version has a capital "V"
-pattern='<strong>V\K[-_.\d]+(?=</strong>)'
+pattern='<strong>(?-i)V\K[-_.\d]+(?=</strong>)'
