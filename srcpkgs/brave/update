@@ -1,3 +1,2 @@
-site='https://brave.com/latest/'
-# NOTE: the desktop version has a capital "V"
-pattern='<strong>(?-i)V\K[-_.\d]+(?=</strong>)'
+site='https://brave-browser-downloads.s3.brave.com/latest/release.version'
+pattern='\K[-_.\d]+'
