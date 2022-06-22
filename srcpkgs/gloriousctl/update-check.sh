@@ -2,7 +2,7 @@
 
 # Set $CURRENT to the timestamp of the last commit of the current version:
 PKGNAME="gloriousctl"
-CURRENT="2022-04-25T18:23:15Z"
+CURRENT="2022-06-21T17:25:19Z"
 
 URL="https://api.github.com/repos/enkore/gloriousctl/commits?page=1&per_page=1"
 LAST=$(curl -s "$URL"  | jq -r '.[0].commit.committer.date')
