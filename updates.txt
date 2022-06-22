@@ -1,2 +1,1 @@
-NO VERSION found for brave
 gloriousctl latest commit date: 2022-04-25T18:23:15Z -> 2022-06-21T17:25:19Z
