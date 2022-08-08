@@ -1,6 +1,6 @@
 # Template file for 'brave-bin'
 pkgname=brave
-version=1.42.86
+version=1.42.88
 revision=1
 only_for_archs="x86_64"
 short_desc="Secure, fast and private web browser with ad blocker"
@@ -9,7 +9,7 @@ hostmakedepends="tar xz"
 license="Mozilla Public License Version 2.0"
 homepage="https://brave.com"
 distfiles="https://github.com/brave/brave-browser/releases/download/v${version}/brave-browser_${version}_amd64.deb"
-checksum=5c2df28176a9a7951a28c5cf54a2242478ddf665d75ca395afe75683a7fefd05
+checksum=3abdde4cbc1aa7a28584eee278bc805d2d0d2a06b97946dddcac85abf60d83e7
 nostrip=yes
 
 do_extract() {
