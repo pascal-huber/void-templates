@@ -1,6 +1,6 @@
 # Template file for 'svlog'
 pkgname=svlog
-version=0.4.1
+version=0.5.0
 revision=1
 build_style=cargo
 depends=""
@@ -9,7 +9,7 @@ maintainer="Pascal Huber <pascal.huber@resolved.ch>"
 license="MIT"
 homepage="https://github.com/pascal-huber/svlog"
 distfiles="https://github.com/pascal-huber/svlog/archive/v${version}.tar.gz"
-checksum=c103c12a6385945e99a09240fb8e4b0551df52c9f1df7d6f88850b87ca27be9d
+checksum=0097fa0468a8353a22bcf95d0de4e16abcc361b0a584a6fc36fceec9a645843c
 
 post_install() {
 	vlicense LICENSE
