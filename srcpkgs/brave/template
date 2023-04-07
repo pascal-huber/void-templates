@@ -1,12 +1,12 @@
-# Template file for 'brave-bin'
+# Template file for 'brave'
 pkgname=brave
 version=1.50.114
 revision=1
-only_for_archs="x86_64"
+archs="x86_64-glibc ~*"
+hostmakedepends="tar xz"
 short_desc="Secure, fast and private web browser with ad blocker"
 maintainer="Pascal Huber <pascal.huber@resolved.ch>"
-hostmakedepends="tar xz"
-license="Mozilla Public License Version 2.0"
+license="MPL-2.0"
 homepage="https://brave.com"
 distfiles="https://github.com/brave/brave-browser/releases/download/v${version}/brave-browser_${version}_amd64.deb"
 checksum=699b8dc4ee308554546f8529d15c32322239d0eba65ae0837f39b5e72c067489

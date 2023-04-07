@@ -2,7 +2,7 @@
 pkgname=bibata-cursor
 version=2.0.3
 revision=1
-short_desc="Opensource, compact, and material designed cursor set."
+short_desc="Opensource, compact, and material designed cursor set"
 maintainer="Pascal Huber <pascal.huber@resolved.ch>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/ful1e5/Bibata_Cursor"
@@ -10,12 +10,12 @@ changelog="https://github.com/ful1e5/Bibata_Cursor/raw/main/CHANGELOG.md"
 distfiles="https://github.com/ful1e5/Bibata_Cursor/releases/download/v${version}/Bibata.tar.gz"
 checksum=1664a1e848707e643362eb772a38f077a4cac6362ca39f5705f59e85128b270c
 
-do_extract(){
+do_extract() {
 	mkdir -p ${DESTDIR}
-    bsdtar -xvf ${XBPS_SRCDISTDIR}/${pkgname}-${version}/Bibata.tar.gz -C ${DESTDIR}
+	bsdtar -xvf ${XBPS_SRCDISTDIR}/${pkgname}-${version}/Bibata.tar.gz -C ${DESTDIR}
 }
 
-do_install(){
-    mkdir -p ${DESTDIR}/usr/share/icons/
-    mv ${DESTDIR}/Bibata-* ${DESTDIR}/usr/share/icons/
+do_install() {
+	mkdir -p ${DESTDIR}/usr/share/icons/
+	mv ${DESTDIR}/Bibata-* ${DESTDIR}/usr/share/icons/
 }
