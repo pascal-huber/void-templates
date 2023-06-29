@@ -1,1 +1,2 @@
-brave-1.50.114 -> brave-1.52.126
+brave-1.50.114 -> brave-1.52.129
+gloriousctl latest commit date: 2022-06-21T17:25:19Z -> 
