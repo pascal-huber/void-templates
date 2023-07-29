@@ -1,1 +1,9 @@
-brave-1.50.114 -> brave-1.56.14
+brave-1.50.114 -> brave-2
+brave-1.50.114 -> brave-3
+brave-1.50.114 -> brave-5
+brave-1.50.114 -> brave-6
+brave-1.50.114 -> brave-7
+brave-1.50.114 -> brave-8
+brave-1.50.114 -> brave-12
+brave-1.50.114 -> brave-69
+brave-1.50.114 -> brave-34365
