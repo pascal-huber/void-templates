@@ -6,7 +6,5 @@ brave-1.50.114 -> brave-6
 brave-1.50.114 -> brave-7
 brave-1.50.114 -> brave-8
 brave-1.50.114 -> brave-9
-brave-1.50.114 -> brave-26
-brave-1.50.114 -> brave-74
-brave-1.50.114 -> brave-89
+brave-1.50.114 -> brave-53
 svlog-0.6.1 -> svlog-0.6.2
